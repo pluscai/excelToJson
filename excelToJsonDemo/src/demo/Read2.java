@@ -31,7 +31,7 @@ public class Read2 {
 		// 返回Sheet对象
 		HSSFSheet sheet = workbook.getSheet("Sheet1");
 
-		int lastRowIndex = sheet.getLastRowNum(); // 索引�?0�?�?
+		int lastRowIndex = sheet.getLastRowNum(); // 索引�?0�?�?
 
 		JSONArray jsonArray = new JSONArray();
 
@@ -51,18 +51,18 @@ public class Read2 {
 		JSONArray jsonArray5 = new JSONArray();
 
 		for (int i = 0; i <= lastRowIndex; i++) {
-			HSSFRow row = sheet.getRow(i); // 得到�?
+			HSSFRow row = sheet.getRow(i); // 得到�?
 			if (row == null) {
 				break;
 			}
 
-			// �?5�? -- 5�?
+			// �?5�? -- 5�?
 			HSSFCell cell5 = row.getCell(4);
 			if (cell5 != null && !"".equals(cell5)) {
 				String cellValue5 = row.getCell(4).getStringCellValue();
 				Result mergedRegion5 = isMergedRegion(sheet, i, 4);
 				if (mergedRegion5.merged == false) {
-					// 不是合并�?
+					// 不是合并�?
 					if (!"".equals(cellValue5)) {
 						rowobj5.put("text", cellValue5);
 						jsonArray5.add(rowobj5);
@@ -70,12 +70,12 @@ public class Read2 {
 				}
 			}
 
-			// �?4�? -- 4�?
+			// �?4�? -- 4�?
 			HSSFCell cell4 = row.getCell(3);
 			if (cell4 != null && !"".equals(cell4)) {
 				String cellValue4 = row.getCell(3).getStringCellValue();
 				Result mergedRegion4 = isMergedRegion(sheet, i, 3);
-				if (mergedRegion4.merged == false) {// 不是合并�?
+				if (mergedRegion4.merged == false) {// 不是合并�?
 					if (!"".equals(cellValue4)) {
 						rowobj4.put("text", cellValue4);
 						if (rowobj5 != null && jsonArray5.size() > 0) {
@@ -98,13 +98,13 @@ public class Read2 {
 				}
 			}
 
-			// �?3�? -- 三级
+			// �?3�? -- 三级
 			HSSFCell cell3 = row.getCell(2);
 			if (cell3 != null && !"".equals(cell3)) {
 				String cellValue3 = row.getCell(2).getStringCellValue();
 				Result mergedRegion3 = isMergedRegion(sheet, i, 2);
 				if (mergedRegion3.merged == false) {
-					// 不是合并�?
+					// 不是合并�?
 					if (!"".equals(cellValue3)) {
 
 						rowobj3.put("text", cellValue3);
@@ -130,13 +130,13 @@ public class Read2 {
 
 			}
 
-			// �?2�? - 二级目录
+			// �?2�? - 二级目录
 			HSSFCell cell2 = row.getCell(1);
 			if (cell2 != null && !"".equals(cell2)) {
 				String cellValue2 = row.getCell(1).getStringCellValue();
 				Result mergedRegion2 = isMergedRegion(sheet, i, 1);
 				if (mergedRegion2.merged == false) {
-					// 不是合并�?
+					// 不是合并�?
 					if (!"".equals(cellValue2)) {
 						rowobj2.put("text", cellValue2);
 						if (jsonArray3.size() > 0) {
@@ -161,13 +161,13 @@ public class Read2 {
 				}
 			}
 
-			// �?1�? -- �?级目�?
+			// �?1�? -- �?级目�?
 			HSSFCell cell1 = row.getCell(0);
 			if (cell1 != null && !"".equals(cell1)) {
 				String cellValue1 = row.getCell(0).getStringCellValue();
 				Result mergedRegion1 = isMergedRegion(sheet, i, 0);
 				if (mergedRegion1.merged == false) {
-					// 不是合并�?
+					// 不是合并�?
 					if (!"".equals(cellValue1)) {
 						rowobj1.put("text", cellValue1);
 						if (jsonArray2.size() > 0) {
